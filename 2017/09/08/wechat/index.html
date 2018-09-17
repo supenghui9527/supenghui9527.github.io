@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="日常积累," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="微信小程序体验版问题微信小程序在公众平台上发布体验版本，添加体验者后，体验者必须打开调试才可以访问接口，正常发送请求。微信小程序全局设置微信小程序全局变量可以在page根目录下page.js中的globalData属性中声明，globalData是一个对象，里面以键值对的形式存在。如下可以声明一个全局的变量用来调用接口：1234globalData:&amp;#123;  userInfo:null,">
+<meta name="keywords" content="日常积累">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信小程序">
+<meta property="og:url" content="http://www.wsspha.cn/2017/09/08/wechat/index.html">
+<meta property="og:site_name" content="苏朋辉">
+<meta property="og:description" content="微信小程序体验版问题微信小程序在公众平台上发布体验版本，添加体验者后，体验者必须打开调试才可以访问接口，正常发送请求。微信小程序全局设置微信小程序全局变量可以在page根目录下page.js中的globalData属性中声明，globalData是一个对象，里面以键值对的形式存在。如下可以声明一个全局的变量用来调用接口：1234globalData:&amp;#123;  userInfo:null,">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-04-16T05:34:17.900Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="微信小程序">
+<meta name="twitter:description" content="微信小程序体验版问题微信小程序在公众平台上发布体验版本，添加体验者后，体验者必须打开调试才可以访问接口，正常发送请求。微信小程序全局设置微信小程序全局变量可以在page根目录下page.js中的globalData属性中声明，globalData是一个对象，里面以键值对的形式存在。如下可以声明一个全局的变量用来调用接口：1234globalData:&amp;#123;  userInfo:null,">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.wsspha.cn/2017/09/08/wechat/"/>
+
+
+
+
+
+  <title>微信小程序 | 苏朋辉</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">苏朋辉</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.wsspha.cn/2017/09/08/wechat/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="苏朋辉">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://www.wsspha.cn/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="苏朋辉">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">微信小程序</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-08T08:43:31+08:00">
+                2017-09-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="微信小程序体验版问题"><a href="#微信小程序体验版问题" class="headerlink" title="微信小程序体验版问题"></a>微信小程序体验版问题</h1><h2 id="微信小程序在公众平台上发布体验版本，添加体验者后，体验者必须打开调试才可以访问接口，正常发送请求。"><a href="#微信小程序在公众平台上发布体验版本，添加体验者后，体验者必须打开调试才可以访问接口，正常发送请求。" class="headerlink" title="微信小程序在公众平台上发布体验版本，添加体验者后，体验者必须打开调试才可以访问接口，正常发送请求。"></a><font weight="normal" size="4">微信小程序在公众平台上发布体验版本，添加体验者后，体验者<font weight="normal" size="4"><font color="#FF0000">必须打开调试</font>才可以访问接口，正常发送请求。</font></font></h2><h1 id="微信小程序全局设置"><a href="#微信小程序全局设置" class="headerlink" title="微信小程序全局设置"></a>微信小程序全局设置</h1><h2 id="微信小程序全局变量可以在page根目录下page-js中的globalData属性中声明，globalData是一个对象，里面以键值对的形式存在。"><a href="#微信小程序全局变量可以在page根目录下page-js中的globalData属性中声明，globalData是一个对象，里面以键值对的形式存在。" class="headerlink" title="微信小程序全局变量可以在page根目录下page.js中的globalData属性中声明，globalData是一个对象，里面以键值对的形式存在。"></a><font weight="normal" size="4">微信小程序全局变量可以在page根目录下page.js中的globalData属性中声明，globalData是一个对象，里面以键值对的形式存在。</font></h2><p>如下可以声明一个全局的变量用来调用接口：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">globalData:&#123;</span><br><span class="line">  userInfo:null,</span><br><span class="line">  host:<span class="string">'http://www.wsspha.cn/blogs'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<h2 id="host就是一个全局的变量在小程序的各个子模块中都可以通过getApp-globalData-host调用，设置全局变量可以方便测试和正式服务器调试，只需改变全家变量就可以了。当然全局变量还有很多用到的地方，要看业务需求。"><a href="#host就是一个全局的变量在小程序的各个子模块中都可以通过getApp-globalData-host调用，设置全局变量可以方便测试和正式服务器调试，只需改变全家变量就可以了。当然全局变量还有很多用到的地方，要看业务需求。" class="headerlink" title="host就是一个全局的变量在小程序的各个子模块中都可以通过getApp().globalData.host调用，设置全局变量可以方便测试和正式服务器调试，只需改变全家变量就可以了。当然全局变量还有很多用到的地方，要看业务需求。"></a><font weight="normal" size="4"><font color="#FF0000">host</font>就是一个全局的变量在小程序的各个子模块中都可以通过<font color="#FF0000">getApp().globalData.host</font>调用，设置全局变量可以方便测试和正式服务器调试，只需改变全家变量就可以了。当然全局变量还有很多用到的地方，要看业务需求。</font></h2><h2 id="page-json是一个对象，里面json格式，pages数组里面可以认为是路由就是我们所说的页面，也就是各个模块的命名以及路径。另一个window是整个小程序的顶部的title的一些设置，可以查看官网文档进行设置。"><a href="#page-json是一个对象，里面json格式，pages数组里面可以认为是路由就是我们所说的页面，也就是各个模块的命名以及路径。另一个window是整个小程序的顶部的title的一些设置，可以查看官网文档进行设置。" class="headerlink" title="page.json是一个对象，里面json格式，pages数组里面可以认为是路由就是我们所说的页面，也就是各个模块的命名以及路径。另一个window是整个小程序的顶部的title的一些设置，可以查看官网文档进行设置。"></a><font size="4">page.json是一个对象，里面json格式，pages数组里面可以认为是路由就是我们所说的页面，也就是各个模块的命名以及路径。另一个window是整个小程序的顶部的title的一些设置，可以查看官网文档进行设置。</font></h2><h2 id="所有page根目录下的配置文件都是针对的全局的设置。pages下面的所有模块也有page-js、page-json、page-wxss、page-wxml。当然名字是自己在根目录的page-json中定义的，可以快捷的生成一个模块，不需要在编辑器中一个个新建。并且模块的配置文件优先级大于全局的。"><a href="#所有page根目录下的配置文件都是针对的全局的设置。pages下面的所有模块也有page-js、page-json、page-wxss、page-wxml。当然名字是自己在根目录的page-json中定义的，可以快捷的生成一个模块，不需要在编辑器中一个个新建。并且模块的配置文件优先级大于全局的。" class="headerlink" title="所有page根目录下的配置文件都是针对的全局的设置。pages下面的所有模块也有page.js、page.json、page.wxss、page.wxml。当然名字是自己在根目录的page.json中定义的，可以快捷的生成一个模块，不需要在编辑器中一个个新建。并且模块的配置文件优先级大于全局的。"></a><font size="4" color="#f00">所有page根目录下的配置文件都是针对的全局的设置。pages下面的所有模块也有page.js、page.json、page.wxss、page.wxml。当然名字是自己在根目录的page.json中定义的，可以快捷的生成一个模块，不需要在编辑器中一个个新建。并且模块的配置文件优先级大于全局的。</font></h2><h1 id="微信小程序在css中使用背景图片的问题"><a href="#微信小程序在css中使用背景图片的问题" class="headerlink" title="微信小程序在css中使用背景图片的问题"></a>微信小程序在css中使用背景图片的问题</h1><h2 id="小程序中如果在css中使用背景图片，目前为止如果审核通过后会出现图片无法显示的问题，官方给的就是图片要么使用base64转码，或者直接使用服务器上的图片，不能使用本地的，虽然在开发者工具中可以显示正常，但是代码审核后却不显示。"><a href="#小程序中如果在css中使用背景图片，目前为止如果审核通过后会出现图片无法显示的问题，官方给的就是图片要么使用base64转码，或者直接使用服务器上的图片，不能使用本地的，虽然在开发者工具中可以显示正常，但是代码审核后却不显示。" class="headerlink" title="小程序中如果在css中使用背景图片，目前为止如果审核通过后会出现图片无法显示的问题，官方给的就是图片要么使用base64转码，或者直接使用服务器上的图片，不能使用本地的，虽然在开发者工具中可以显示正常，但是代码审核后却不显示。"></a><font size="4">小程序中如果在css中使用背景图片，目前为止如果审核通过后会出现图片无法显示的问题，官方给的就是图片要么使用base64转码，或者直接使用服务器上的图片，不能使用本地的，虽然在开发者工具中可以显示正常，但是代码审核后却不显示。</font></h2><h1 id="微信小程序map地图使用踩坑。"><a href="#微信小程序map地图使用踩坑。" class="headerlink" title="微信小程序map地图使用踩坑。"></a>微信小程序map地图使用踩坑。</h1><h2 id="map组件以及canvas等一些原生组件都是层级最高的，虽然在编辑器ide上设置z-index可以盖住地图，但是在真机上却是被地图遮住，所以想做浮层的时候会有很大的问题，可以通过把浮层出来的时候把地图hidden，想要用腾讯或者高德百度的sdk的话需要在微信公众平台的设置里面添加request合法域名才能在真机上调用sdk的方法。"><a href="#map组件以及canvas等一些原生组件都是层级最高的，虽然在编辑器ide上设置z-index可以盖住地图，但是在真机上却是被地图遮住，所以想做浮层的时候会有很大的问题，可以通过把浮层出来的时候把地图hidden，想要用腾讯或者高德百度的sdk的话需要在微信公众平台的设置里面添加request合法域名才能在真机上调用sdk的方法。" class="headerlink" title="map组件以及canvas等一些原生组件都是层级最高的，虽然在编辑器ide上设置z-index可以盖住地图，但是在真机上却是被地图遮住，所以想做浮层的时候会有很大的问题，可以通过把浮层出来的时候把地图hidden，想要用腾讯或者高德百度的sdk的话需要在微信公众平台的设置里面添加request合法域名才能在真机上调用sdk的方法。"></a><font size="4">map组件以及canvas等一些原生组件都是层级最高的，虽然在编辑器ide上设置z-index可以盖住地图，但是在真机上却是被地图遮住，所以想做浮层的时候会有很大的问题，可以通过把浮层出来的时候把地图hidden，想要用腾讯或者高德百度的sdk的话需要在微信公众平台的设置里面添加request合法域名才能在真机上调用sdk的方法。</font></h2><h1 id="提交「小程序」时需要注意的地方，避免悲剧。"><a href="#提交「小程序」时需要注意的地方，避免悲剧。" class="headerlink" title="提交「小程序」时需要注意的地方，避免悲剧。"></a>提交「小程序」时需要注意的地方，避免悲剧。</h1><h2 id="1、小程序的名称必须和所提供的服务有所关联，而且必须是两个词以上的组合，不能使用广泛使用不具备识别性的词语来命名，比如日历、电话。"><a href="#1、小程序的名称必须和所提供的服务有所关联，而且必须是两个词以上的组合，不能使用广泛使用不具备识别性的词语来命名，比如日历、电话。" class="headerlink" title="1、小程序的名称必须和所提供的服务有所关联，而且必须是两个词以上的组合，不能使用广泛使用不具备识别性的词语来命名，比如日历、电话。"></a><font size="4">1、小程序的名称必须和所提供的服务有所关联，而且必须是两个词以上的组合，不能使用广泛使用不具备识别性的词语来命名，比如日历、电话。</font></h2><h2 id="2、提交小程序审查时，头像-LOGO-要尽量使用清晰度高的图片，这个清晰度是指可以看清、分别、图片中包含的元素，否则微信不予通过。"><a href="#2、提交小程序审查时，头像-LOGO-要尽量使用清晰度高的图片，这个清晰度是指可以看清、分别、图片中包含的元素，否则微信不予通过。" class="headerlink" title="2、提交小程序审查时，头像 LOGO 要尽量使用清晰度高的图片，这个清晰度是指可以看清、分别、图片中包含的元素，否则微信不予通过。"></a><font size="4">2、提交小程序审查时，头像 LOGO 要尽量使用清晰度高的图片，这个清晰度是指可以看清、分别、图片中包含的元素，否则微信不予通过。</font></h2><h2 id="3、微信希望，用户打开小程序的时候直接就能使用到相关的功能，因此这份文档提到，用户在小程序的页面就能使用到相关的服务，不能隐藏，也不能进行多次跳转。有特别规定，「小程序首页必须能够直达或者经过-2-次点击到达」相关的功能。"><a href="#3、微信希望，用户打开小程序的时候直接就能使用到相关的功能，因此这份文档提到，用户在小程序的页面就能使用到相关的服务，不能隐藏，也不能进行多次跳转。有特别规定，「小程序首页必须能够直达或者经过-2-次点击到达」相关的功能。" class="headerlink" title="3、微信希望，用户打开小程序的时候直接就能使用到相关的功能，因此这份文档提到，用户在小程序的页面就能使用到相关的服务，不能隐藏，也不能进行多次跳转。有特别规定，「小程序首页必须能够直达或者经过 2 次点击到达」相关的功能。"></a><font size="4">3、微信希望，用户打开小程序的时候直接就能使用到相关的功能，因此这份文档提到，用户在小程序的页面就能使用到相关的服务，不能隐藏，也不能进行多次跳转。有特别规定，「小程序首页必须能够直达或者经过 2 次点击到达」相关的功能。</font></h2><h2 id="4、小程序的功能不能过于简单，比如说只有一个页面，或只提供一个按钮。"><a href="#4、小程序的功能不能过于简单，比如说只有一个页面，或只提供一个按钮。" class="headerlink" title="4、小程序的功能不能过于简单，比如说只有一个页面，或只提供一个按钮。"></a><font size="4">4、小程序的功能不能过于简单，比如说只有一个页面，或只提供一个按钮。</font></h2><h2 id="5、小程序不能展示、推荐第三方小程序，不能做小程序导航、互推、小程序排行榜等。也不能通过小程序来搜索其它小程序"><a href="#5、小程序不能展示、推荐第三方小程序，不能做小程序导航、互推、小程序排行榜等。也不能通过小程序来搜索其它小程序" class="headerlink" title="5、小程序不能展示、推荐第三方小程序，不能做小程序导航、互推、小程序排行榜等。也不能通过小程序来搜索其它小程序"></a><font size="4">5、小程序不能展示、推荐第三方小程序，不能做小程序导航、互推、小程序排行榜等。也不能通过小程序来搜索其它小程序</font></h2><h2 id="6、用户使用小程序时，不能以关注或使用其它小程序作为条件。"><a href="#6、用户使用小程序时，不能以关注或使用其它小程序作为条件。" class="headerlink" title="6、用户使用小程序时，不能以关注或使用其它小程序作为条件。"></a><font size="4">6、用户使用小程序时，不能以关注或使用其它小程序作为条件。</font></h2><h2 id="7、禁止诱导分享，这个不用再说，微信对此一直严厉打压。"><a href="#7、禁止诱导分享，这个不用再说，微信对此一直严厉打压。" class="headerlink" title="7、禁止诱导分享，这个不用再说，微信对此一直严厉打压。"></a><font size="4">7、禁止诱导分享，这个不用再说，微信对此一直严厉打压。</font></h2><h2 id="8、小程序不能用作营销活动、广告用途，不能存在类似算命、星座运势之类的测试类内容，不能包含赌博竞猜抽奖等内容。"><a href="#8、小程序不能用作营销活动、广告用途，不能存在类似算命、星座运势之类的测试类内容，不能包含赌博竞猜抽奖等内容。" class="headerlink" title="8、小程序不能用作营销活动、广告用途，不能存在类似算命、星座运势之类的测试类内容，不能包含赌博竞猜抽奖等内容。"></a><font size="4">8、小程序不能用作营销活动、广告用途，不能存在类似算命、星座运势之类的测试类内容，不能包含赌博竞猜抽奖等内容。</font></h2><h2 id="9、小程序里面的图片，不能包含广告、网址。"><a href="#9、小程序里面的图片，不能包含广告、网址。" class="headerlink" title="9、小程序里面的图片，不能包含广告、网址。"></a><font size="4">9、小程序里面的图片，不能包含广告、网址。</font></h2><h1 id="运营「小程序」的时候，需要注意哪些地方，才不会下架？"><a href="#运营「小程序」的时候，需要注意哪些地方，才不会下架？" class="headerlink" title="运营「小程序」的时候，需要注意哪些地方，才不会下架？"></a>运营「小程序」的时候，需要注意哪些地方，才不会下架？</h1><h2 id="1、微信不允许批量注册、重复提交大量类似的小程序。"><a href="#1、微信不允许批量注册、重复提交大量类似的小程序。" class="headerlink" title="1、微信不允许批量注册、重复提交大量类似的小程序。"></a><font size="4">1、微信不允许批量注册、重复提交大量类似的小程序。</font></h2><h2 id="2、小程序的添加，不能设置付费，必须是免费添加。"><a href="#2、小程序的添加，不能设置付费，必须是免费添加。" class="headerlink" title="2、小程序的添加，不能设置付费，必须是免费添加。"></a><font size="4">2、小程序的添加，不能设置付费，必须是免费添加。</font></h2><h2 id="3、如果你的微信小程序含有支付功能，需要在简介当中明确指示。"><a href="#3、如果你的微信小程序含有支付功能，需要在简介当中明确指示。" class="headerlink" title="3、如果你的微信小程序含有支付功能，需要在简介当中明确指示。"></a><font size="4">3、如果你的微信小程序含有支付功能，需要在简介当中明确指示。</font></h2><h2 id="4、如果你希望通过小程序创业，需要注意：如果小程序所属的公司被收购或合并，你从微信和微信小程序接收的小程序里继续使用。"><a href="#4、如果你希望通过小程序创业，需要注意：如果小程序所属的公司被收购或合并，你从微信和微信小程序接收的小程序里继续使用。" class="headerlink" title="4、如果你希望通过小程序创业，需要注意：如果小程序所属的公司被收购或合并，你从微信和微信小程序接收的小程序里继续使用。"></a><font size="4">4、如果你希望通过小程序创业，需要注意：如果小程序所属的公司被收购或合并，你从微信和微信小程序接收的小程序里继续使用。</font></h2><h2 id="5、如果小程序使用到地理位置定位功能，在采集、-获取用户地理位置时必须得到用户的同意。"><a href="#5、如果小程序使用到地理位置定位功能，在采集、-获取用户地理位置时必须得到用户的同意。" class="headerlink" title="5、如果小程序使用到地理位置定位功能，在采集、 获取用户地理位置时必须得到用户的同意。"></a><font size="4">5、如果小程序使用到地理位置定位功能，在采集、 获取用户地理位置时必须得到用户的同意。</font></h2><h2 id="6、小程序后台服务，仅限于集中目的：VoIP、音频播放、地理位置、完成任务和本地提醒。"><a href="#6、小程序后台服务，仅限于集中目的：VoIP、音频播放、地理位置、完成任务和本地提醒。" class="headerlink" title="6、小程序后台服务，仅限于集中目的：VoIP、音频播放、地理位置、完成任务和本地提醒。"></a><font size="4">6、小程序后台服务，仅限于集中目的：VoIP、音频播放、地理位置、完成任务和本地提醒。</font></h2><h2 id="7、禁止多媒体比如音频、视频的自动播放。"><a href="#7、禁止多媒体比如音频、视频的自动播放。" class="headerlink" title="7、禁止多媒体比如音频、视频的自动播放。"></a><font size="4">7、禁止多媒体比如音频、视频的自动播放。</font></h2><h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><font size="3">微信小程序并不难，上手很快和vue挺像的，因为很多东西微信都已经封装好了，只需要调方法就行了，由于项目做了几个月，一些坑也记不太清了。</font>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/日常积累/" rel="tag"># 日常积累</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/16/this/" rel="next" title="js中的this关键字详解">
+                <i class="fa fa-chevron-left"></i> js中的this关键字详解
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/19/jsprototype/" rel="prev" title="js原型链">
+                js原型链 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://www.wsspha.cn/images/avatar.jpg"
+                alt="苏朋辉" />
+            
+              <p class="site-author-name" itemprop="name">苏朋辉</p>
+              <p class="site-description motion-element" itemprop="description">长路漫漫任我闯昂昂昂</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/supenghui9527" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:641366952@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#微信小程序体验版问题"><span class="nav-number">1.</span> <span class="nav-text">微信小程序体验版问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#微信小程序在公众平台上发布体验版本，添加体验者后，体验者必须打开调试才可以访问接口，正常发送请求。"><span class="nav-number">1.1.</span> <span class="nav-text">微信小程序在公众平台上发布体验版本，添加体验者后，体验者必须打开调试才可以访问接口，正常发送请求。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#微信小程序全局设置"><span class="nav-number">2.</span> <span class="nav-text">微信小程序全局设置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#微信小程序全局变量可以在page根目录下page-js中的globalData属性中声明，globalData是一个对象，里面以键值对的形式存在。"><span class="nav-number">2.1.</span> <span class="nav-text">微信小程序全局变量可以在page根目录下page.js中的globalData属性中声明，globalData是一个对象，里面以键值对的形式存在。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#host就是一个全局的变量在小程序的各个子模块中都可以通过getApp-globalData-host调用，设置全局变量可以方便测试和正式服务器调试，只需改变全家变量就可以了。当然全局变量还有很多用到的地方，要看业务需求。"><span class="nav-number">2.2.</span> <span class="nav-text">host就是一个全局的变量在小程序的各个子模块中都可以通过getApp().globalData.host调用，设置全局变量可以方便测试和正式服务器调试，只需改变全家变量就可以了。当然全局变量还有很多用到的地方，要看业务需求。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#page-json是一个对象，里面json格式，pages数组里面可以认为是路由就是我们所说的页面，也就是各个模块的命名以及路径。另一个window是整个小程序的顶部的title的一些设置，可以查看官网文档进行设置。"><span class="nav-number">2.3.</span> <span class="nav-text">page.json是一个对象，里面json格式，pages数组里面可以认为是路由就是我们所说的页面，也就是各个模块的命名以及路径。另一个window是整个小程序的顶部的title的一些设置，可以查看官网文档进行设置。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#所有page根目录下的配置文件都是针对的全局的设置。pages下面的所有模块也有page-js、page-json、page-wxss、page-wxml。当然名字是自己在根目录的page-json中定义的，可以快捷的生成一个模块，不需要在编辑器中一个个新建。并且模块的配置文件优先级大于全局的。"><span class="nav-number">2.4.</span> <span class="nav-text">所有page根目录下的配置文件都是针对的全局的设置。pages下面的所有模块也有page.js、page.json、page.wxss、page.wxml。当然名字是自己在根目录的page.json中定义的，可以快捷的生成一个模块，不需要在编辑器中一个个新建。并且模块的配置文件优先级大于全局的。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#微信小程序在css中使用背景图片的问题"><span class="nav-number">3.</span> <span class="nav-text">微信小程序在css中使用背景图片的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#小程序中如果在css中使用背景图片，目前为止如果审核通过后会出现图片无法显示的问题，官方给的就是图片要么使用base64转码，或者直接使用服务器上的图片，不能使用本地的，虽然在开发者工具中可以显示正常，但是代码审核后却不显示。"><span class="nav-number">3.1.</span> <span class="nav-text">小程序中如果在css中使用背景图片，目前为止如果审核通过后会出现图片无法显示的问题，官方给的就是图片要么使用base64转码，或者直接使用服务器上的图片，不能使用本地的，虽然在开发者工具中可以显示正常，但是代码审核后却不显示。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#微信小程序map地图使用踩坑。"><span class="nav-number">4.</span> <span class="nav-text">微信小程序map地图使用踩坑。</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#map组件以及canvas等一些原生组件都是层级最高的，虽然在编辑器ide上设置z-index可以盖住地图，但是在真机上却是被地图遮住，所以想做浮层的时候会有很大的问题，可以通过把浮层出来的时候把地图hidden，想要用腾讯或者高德百度的sdk的话需要在微信公众平台的设置里面添加request合法域名才能在真机上调用sdk的方法。"><span class="nav-number">4.1.</span> <span class="nav-text">map组件以及canvas等一些原生组件都是层级最高的，虽然在编辑器ide上设置z-index可以盖住地图，但是在真机上却是被地图遮住，所以想做浮层的时候会有很大的问题，可以通过把浮层出来的时候把地图hidden，想要用腾讯或者高德百度的sdk的话需要在微信公众平台的设置里面添加request合法域名才能在真机上调用sdk的方法。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#提交「小程序」时需要注意的地方，避免悲剧。"><span class="nav-number">5.</span> <span class="nav-text">提交「小程序」时需要注意的地方，避免悲剧。</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、小程序的名称必须和所提供的服务有所关联，而且必须是两个词以上的组合，不能使用广泛使用不具备识别性的词语来命名，比如日历、电话。"><span class="nav-number">5.1.</span> <span class="nav-text">1、小程序的名称必须和所提供的服务有所关联，而且必须是两个词以上的组合，不能使用广泛使用不具备识别性的词语来命名，比如日历、电话。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、提交小程序审查时，头像-LOGO-要尽量使用清晰度高的图片，这个清晰度是指可以看清、分别、图片中包含的元素，否则微信不予通过。"><span class="nav-number">5.2.</span> <span class="nav-text">2、提交小程序审查时，头像 LOGO 要尽量使用清晰度高的图片，这个清晰度是指可以看清、分别、图片中包含的元素，否则微信不予通过。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、微信希望，用户打开小程序的时候直接就能使用到相关的功能，因此这份文档提到，用户在小程序的页面就能使用到相关的服务，不能隐藏，也不能进行多次跳转。有特别规定，「小程序首页必须能够直达或者经过-2-次点击到达」相关的功能。"><span class="nav-number">5.3.</span> <span class="nav-text">3、微信希望，用户打开小程序的时候直接就能使用到相关的功能，因此这份文档提到，用户在小程序的页面就能使用到相关的服务，不能隐藏，也不能进行多次跳转。有特别规定，「小程序首页必须能够直达或者经过 2 次点击到达」相关的功能。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、小程序的功能不能过于简单，比如说只有一个页面，或只提供一个按钮。"><span class="nav-number">5.4.</span> <span class="nav-text">4、小程序的功能不能过于简单，比如说只有一个页面，或只提供一个按钮。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、小程序不能展示、推荐第三方小程序，不能做小程序导航、互推、小程序排行榜等。也不能通过小程序来搜索其它小程序"><span class="nav-number">5.5.</span> <span class="nav-text">5、小程序不能展示、推荐第三方小程序，不能做小程序导航、互推、小程序排行榜等。也不能通过小程序来搜索其它小程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6、用户使用小程序时，不能以关注或使用其它小程序作为条件。"><span class="nav-number">5.6.</span> <span class="nav-text">6、用户使用小程序时，不能以关注或使用其它小程序作为条件。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7、禁止诱导分享，这个不用再说，微信对此一直严厉打压。"><span class="nav-number">5.7.</span> <span class="nav-text">7、禁止诱导分享，这个不用再说，微信对此一直严厉打压。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8、小程序不能用作营销活动、广告用途，不能存在类似算命、星座运势之类的测试类内容，不能包含赌博竞猜抽奖等内容。"><span class="nav-number">5.8.</span> <span class="nav-text">8、小程序不能用作营销活动、广告用途，不能存在类似算命、星座运势之类的测试类内容，不能包含赌博竞猜抽奖等内容。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9、小程序里面的图片，不能包含广告、网址。"><span class="nav-number">5.9.</span> <span class="nav-text">9、小程序里面的图片，不能包含广告、网址。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#运营「小程序」的时候，需要注意哪些地方，才不会下架？"><span class="nav-number">6.</span> <span class="nav-text">运营「小程序」的时候，需要注意哪些地方，才不会下架？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、微信不允许批量注册、重复提交大量类似的小程序。"><span class="nav-number">6.1.</span> <span class="nav-text">1、微信不允许批量注册、重复提交大量类似的小程序。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、小程序的添加，不能设置付费，必须是免费添加。"><span class="nav-number">6.2.</span> <span class="nav-text">2、小程序的添加，不能设置付费，必须是免费添加。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、如果你的微信小程序含有支付功能，需要在简介当中明确指示。"><span class="nav-number">6.3.</span> <span class="nav-text">3、如果你的微信小程序含有支付功能，需要在简介当中明确指示。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、如果你希望通过小程序创业，需要注意：如果小程序所属的公司被收购或合并，你从微信和微信小程序接收的小程序里继续使用。"><span class="nav-number">6.4.</span> <span class="nav-text">4、如果你希望通过小程序创业，需要注意：如果小程序所属的公司被收购或合并，你从微信和微信小程序接收的小程序里继续使用。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、如果小程序使用到地理位置定位功能，在采集、-获取用户地理位置时必须得到用户的同意。"><span class="nav-number">6.5.</span> <span class="nav-text">5、如果小程序使用到地理位置定位功能，在采集、 获取用户地理位置时必须得到用户的同意。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6、小程序后台服务，仅限于集中目的：VoIP、音频播放、地理位置、完成任务和本地提醒。"><span class="nav-number">6.6.</span> <span class="nav-text">6、小程序后台服务，仅限于集中目的：VoIP、音频播放、地理位置、完成任务和本地提醒。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7、禁止多媒体比如音频、视频的自动播放。"><span class="nav-number">6.7.</span> <span class="nav-text">7、禁止多媒体比如音频、视频的自动播放。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结语"><span class="nav-number">7.</span> <span class="nav-text">结语</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">苏朋辉</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
